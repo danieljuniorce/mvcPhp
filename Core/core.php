@@ -29,11 +29,14 @@
 
             } else {
                 $currentAction = 'index';
-                $currentController = 'loginController';
+                $currentController = 'indexController';
                 $params = array();
             }
-
-            require_once 'App/Controller/controller.php';
+            if (!file_exists('App/Controller/'.$currentController.'.php') /*|| !method_exists($currentController, $currentAction)*/) {
+                $currentController = 'notFoundController';
+                $currentAction = 'index';
+            }
+            require_once 'controller.php';
 
             $c = new $currentController();
             call_user_func_array(array($c, $currentAction), $params);
