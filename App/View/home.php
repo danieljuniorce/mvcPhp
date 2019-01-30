@@ -1,1 +1,5 @@
-<p>Meu nome é {nome}</p>
+<div class="container">
+    <input id="nome">
+    <button>Atualizar</button>
+    <div id="dados"></div>
+</div>

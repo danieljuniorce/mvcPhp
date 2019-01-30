@@ -11,6 +11,6 @@ class notFoundController extends Controller
 {
     public function index()
     {
-        $this->view('', '404');
+        $this->view('errors', '404');
     }
 }

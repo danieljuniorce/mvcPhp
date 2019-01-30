@@ -3,8 +3,9 @@ namespace Core;
 
 class Controller
 {
-    protected function view($viewPaste, $viewName, $viewData = array())
+    public function view($viewPaste, $viewName, $viewData = array())
     {
+        extract($viewData);
         if ($viewPaste == '') {
             include 'App/View/' . $viewName . '.php';
         } else {
@@ -12,12 +13,12 @@ class Controller
         }
     }
 
-    protected function template($viewPaste, $viewName, $viewData = array())
+    public function template($viewPaste, $viewName, $viewData = array())
     {
         include 'App/View/template.php';
     }
 
-    protected function LoadViewTemplate($viewPaste, $viewName, $viewData = array())
+    public function LoadViewTemplate($viewPaste, $viewName, $viewData = array())
     {
         extract($viewData);
         if ($viewPaste == '') {
