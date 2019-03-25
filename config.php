@@ -1,25 +1,17 @@
 <?php
-require 'environment.php';
+global $config;
 
-$config = array();
-if(ENVIRONMENT == 'development') {
-    define("BASE_URL", "http://localhost:8000");
-    $config['dbname'] = 'classificados';
-    $config['host'] = 'localhost';
-    $config['dbuser'] = 'root';
-    $config['dbpass'] = 'root';
-} else {
-    define("BASE_URL", "http://meusite.com.br/");
-    $config['dbname'] = 'classificados';
-    $config['host'] = 'localhost';
-    $config['dbuser'] = 'root';
-    $config['dbpass'] = 'root';
-}
+$config = array(
+    'link' => 'http://localhost/',
 
-global $db;
-try {
-    $db = new PDO("mysql:dbname=".$config['dbname'].";host=".$config['host'], $config['dbuser'], $config['dbpass']);
-} catch(PDOException $e) {
-    echo "ERRO: ".$e->getMessage();
-    exit;
-}
+    'dbconfig' => array(
+        'dbtype' => 'mysql',
+        'dbhost' => 'localhost',
+        'dbname' => 'dbteste',
+        'dbuser' => 'root',
+        'dbpassword' => 'Da@86318162'
+    ),
+    'timezone' => 'America/Belem',
+
+    'language' => '',
+);

@@ -27,4 +27,10 @@ class Controller
             include 'App/View/'.$viewPaste.'/'. $viewName . '.php';
         }
     }
+
+    public function asset($dir)
+    {
+        global $config;
+        echo $config['link'].$dir;
+    }
 }

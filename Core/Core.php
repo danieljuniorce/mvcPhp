@@ -35,20 +35,13 @@ class Core
             }
         } else {
             $currentAction = 'index';
-            $currentController = 'IndexController';
+            $currentController = 'indexController';
             $params = array();
-        }
-        /*if (!file_exists('App/Controller/'.$currentController.'.php') /*|| !method_exists($currentController, $currentAction)) {
-            $currentController = 'notFoundController';
-            $currentAction = 'index';
-        }
-        */
+        }        
             $prefix = '\Controllers\\';
             $newController = $prefix.ucfirst($currentController);
             $c = new $newController();
 
-            echo $newController.'<br>';
-            echo $currentAction;
             call_user_func_array(array($c, $currentAction), $params);
         }
     }

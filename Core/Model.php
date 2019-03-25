@@ -6,20 +6,39 @@ class Model
     private $pdo;
     public function __construct()
     {
-        global $db;
-        $this->pdo = $db;
+        $dbConfig = $this->getConfig('dbconfig');
+        try {
+            $this->pdo = new PDO($dbConfig['dbtype'].':host='.$dbConfig['dbhost'].';dbname='.$dbConfig['dbname'], $dbConfig['dbuser'], $dbConfig['dbpassword']);
+        } catch (PDOException $e) {
+            echo 'ERROR: '.$e->getMessage();
+        }
     }
-    public static function csrf()
+
+    public function getConfig($name)
     {
-        return $csrf = sha1(md5(date('Y/m/d h:m:s').rand().'crsf'));
+        global $config;
+        return $config[$name];
     }
-    protected function verif_csrf($token)
+    public function csrf_token()
     {
-        //VERIFICAÇÃO DE CSRF
-        if ($token == $_SESSION['token']) {
+        return $_SESSION['csrf_token'] = sha1(md5(rand(1,999).time().date('d:m:Y')));
+    }
+
+    public function verify_csrf($token)
+    {
+        if ($token == $_SESSION['csrf_token']) {
             return true;
         } else {
             return false;
         }
+    }
+
+    public function getQuery($sql)
+    {
+        return $this->pdo->query($sql);
+    }
+    public function getPrepare($sql)
+    {
+        return $this->pdo->prepare($sql);
     }
 }
