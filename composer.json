@@ -1,5 +1,19 @@
 {
-    "require": {
-        "fpdf/fpdf": "^1.81"
+    "name": "danieljuniorce/html",
+    "description": "MVC - Project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Souza",
+            "email": "devdanieljunior@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "Controllers\\": "App/Controller/",
+            "Models\\": "App/Model/"
+        }
     }
 }
