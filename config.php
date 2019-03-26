@@ -13,7 +13,7 @@ $config = array(
       'dbhost' => 'localhost',
       'dbname' => 'dbteste',
       'dbuser' => 'root',
-      'dbpassword' => 'Da@86318162'
+      'dbpassword' => 'password'
     ),
 
     /*
