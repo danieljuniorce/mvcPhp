@@ -8,7 +8,7 @@ class Model
     {
         $dbConfig = $this->getConfig('dbconfig');
         try {
-            $this->pdo = new PDO($dbConfig['dbtype'].':host='.$dbConfig['dbhost'].';dbname='.$dbConfig['dbname'], $dbConfig['dbuser'], $dbConfig['dbpassword']);
+            $this->pdo = new \PDO($dbConfig['dbtype'].':host='.$dbConfig['dbhost'].';dbname='.$dbConfig['dbname'], $dbConfig['dbuser'], $dbConfig['dbpassword']);
         } catch (PDOException $e) {
             echo 'ERROR: '.$e->getMessage();
         }
